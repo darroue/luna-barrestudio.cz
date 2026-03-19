@@ -403,27 +403,8 @@ section {
 .booking .section-header h2 { color: var(--white); }
 .booking .section-header .line { background: var(--gold); }
 .booking .section-header p { color: var(--medium-gray); }
-.iframe-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--white);
-}
-.iframe-container iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-  display: block;
-}
-.booking-mobile-cta {
-  display: none;
+.booking-cta {
   text-align: center;
-}
-@media (max-width: 480px) {
-  .iframe-container { display: none; }
-  .booking-mobile-cta { display: block; }
 }
 
 /* ---- CENÍK ---- */
@@ -821,12 +802,8 @@ section {
       <div class="line"></div>
       <p>Rezervujte si svou lekci online</p>
     </div>
-    <div class="iframe-container">
-      <iframe src="https://petr-radous.reservio.com" title="Rezervace LUNA Studio" loading="lazy"></iframe>
-    </div>
-    <div class="booking-mobile-cta">
-      <p style="margin-bottom:24px; color:var(--medium-gray); font-size:0.9rem;">Pro rezervaci lekce kliknete na tlacitko nize.</p>
-      <a href="https://petr-radous.reservio.com" target="_blank" rel="noopener" class="btn btn-primary">Rezervovat lekci</a>
+    <div class="booking-cta">
+      <a href="https://petr-radous.reservio.com" target="_blank" rel="noopener" class="btn btn-primary" style="padding:18px 48px; font-size:0.85rem;">Rezervovat lekci</a>
     </div>
   </div>
 </section>
