@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNA — Barre & Pilates Boutique Studio</title>
+<meta name="description" content="LUNA Barre & Pilates boutique studio v Praze. Barre, Pilates Reformer, Yoga & Stretch. Rezervujte si lekci.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* ---- CSS VARIABLES ---- */
+:root {
+  --gold: #C9A96E;
+  --gold-light: #E8D5B0;
+  --gold-pale: #F5EDE0;
+  --nude: #D4B896;
+  --nude-light: #F0E6DA;
+  --blush: #E8C4B8;
+  --blush-light: #F5E1DA;
+  --black: #1A1A1A;
+  --charcoal: #2D2D2D;
+  --dark-gray: #4A4A4A;
+  --medium-gray: #8A8A8A;
+  --light-gray: #D4D4D4;
+  --off-white: #FAF8F5;
+  --white: #FFFFFF;
+}
+
+/* ---- RESET & BASE ---- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--off-white);
+  color: var(--charcoal);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ---- UTILITIES ---- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.section-header .line {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 15px auto;
+}
+.section-header p {
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-primary:hover { background: #b8964f; }
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+}
+.btn-outline:hover { background: var(--gold); color: var(--white); }
+.btn-dark {
+  background: var(--black);
+  color: var(--white);
+}
+.btn-dark:hover { background: var(--charcoal); }
+
+/* ---- NAVIGATION ---- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 24px 0;
+  transition: padding 0.3s, background 0.3s;
+  background: transparent;
+}
+.nav.scrolled {
+  padding: 12px 0;
+  background: rgba(26,26,26,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.25em;
+  color: var(--white);
+  font-weight: 400;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+/* Mobile overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,26,0.98);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 50%, #3a3028 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,184,150,0.1) 0%, transparent 70%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards 0.3s;
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero .logo-svg {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 24px;
+}
+.hero .logo-svg .moon-outer { stroke: var(--gold); }
+.hero .logo-svg .moon-crescent { fill: var(--gold); opacity: 0.4; }
+.hero .logo-svg .dancer { fill: var(--white); }
+.hero .logo-svg .sparkle { fill: var(--gold); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  margin-bottom: 8px;
+}
+.hero .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+.hero .tagline {
+  font-size: 0.85rem;
+  color: var(--medium-gray);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+/* ---- O NÁS ---- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-text p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--dark-gray);
+  margin-bottom: 16px;
+}
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.6;
+  padding: 40px;
+  border-left: 2px solid var(--gold-light);
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-quote { font-size: 1.3rem; padding: 24px; }
+}
+
+/* ---- LEKCE ---- */
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.class-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px 32px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  transition: transform 0.3s;
+  text-align: center;
+}
+.class-card:hover { transform: translateY(-4px); }
+.class-icon {
+  color: var(--gold);
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+.class-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.class-card p {
+  font-size: 0.85rem;
+  color: var(--medium-gray);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.class-card .btn { font-size: 0.7rem; padding: 10px 24px; }
+
+/* ---- ROZVRH ---- */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.schedule-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+.schedule-card .day {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+.schedule-item {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--nude-light);
+  font-size: 0.78rem;
+  color: var(--dark-gray);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.schedule-item:last-child { border-bottom: none; }
+.schedule-item .time { color: var(--gold); font-weight: 500; white-space: nowrap; }
+.schedule-note {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 0.85rem;
+  color: var(--medium-gray);
+}
+.schedule-note a { color: var(--gold); text-decoration: underline; }
+
+/* ---- REZERVACE ---- */
+.booking {
+  background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 50%, #3a3028 100%);
+  color: var(--white);
+}
+.booking .section-header h2 { color: var(--white); }
+.booking .section-header .line { background: var(--gold); }
+.booking .section-header p { color: var(--medium-gray); }
+.iframe-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+}
+.iframe-container iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  display: block;
+}
+.booking-mobile-cta {
+  display: none;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .iframe-container { display: none; }
+  .booking-mobile-cta { display: block; }
+}
+
+/* ---- CENÍK ---- */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.price-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px 32px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+.price-card:hover { transform: translateY(-4px); }
+.price-card.featured {
+  border: 1.5px solid var(--gold);
+}
+.price-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  font-weight: 500;
+}
+.price-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.price-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.price-unit {
+  font-size: 0.8rem;
+  color: var(--medium-gray);
+  margin-bottom: 24px;
+}
+.price-list {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.price-list li {
+  padding: 8px 0;
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+  border-bottom: 1px solid var(--nude-light);
+  display: flex;
+  justify-content: space-between;
+}
+.price-list li:last-child { border-bottom: none; }
+.price-list .val { color: var(--gold); font-weight: 500; }
+
+/* ---- KONTAKT ---- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 20px;
+  letter-spacing: 0.08em;
+}
+.contact-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+.contact-item .icon {
+  color: var(--gold);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+.contact-item a { color: var(--gold); }
+.contact-item a:hover { text-decoration: underline; }
+.contact-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.contact-social a {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--gold-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.contact-social a:hover {
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
+}
+.contact-map {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+.contact-map iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  display: block;
+}
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--black);
+  color: var(--medium-gray);
+  padding: 50px 24px;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-brand .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.footer-brand .sub {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--medium-gray);
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--dark-gray);
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--charcoal);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ---- DIVIDER ---- */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--gold-light);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">LUNA</a>
+    <div class="nav-links">
+      <a href="#o-nas">O nas</a>
+      <a href="#lekce">Lekce</a>
+      <a href="#rozvrh">Rozvrh</a>
+      <a href="#rezervace">Rezervace</a>
+      <a href="#cenik">Cenik</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#o-nas">O nas</a>
+  <a href="#lekce">Lekce</a>
+  <a href="#rozvrh">Rozvrh</a>
+  <a href="#rezervace">Rezervace</a>
+  <a href="#cenik">Cenik</a>
+  <a href="#kontakt">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <circle class="moon-outer" cx="55" cy="55" r="48" fill="none" stroke-width="1.5"/>
+      <path class="moon-crescent" d="M25,12 A48,48 0 0,1 25,98 A38,38 0 0,0 25,12 Z" opacity="0.5"/>
+      <path class="sparkle" d="M18,22 L19.5,18 L21,22 L25,23.5 L21,25 L19.5,29 L18,25 L14,23.5 Z"/>
+      <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.7) translate(8,18)"/>
+      <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.5) translate(40,10)"/>
+      <g class="dancer" transform="translate(52,18) scale(0.68)">
+        <circle cx="62" cy="8" r="5.5"/>
+        <circle cx="65" cy="4" r="3"/>
+        <path d="M60,13 Q58,25 56,38 Q55,42 57,42 L63,42 Q65,42 64,38 Q62,28 64,13 Z"/>
+        <path d="M63,16 Q72,14 82,10 Q84,9 83,11 Q78,16 68,20 Z"/>
+        <path d="M58,16 Q50,18 42,22 Q40,23 41,21 Q46,15 54,14 Z"/>
+        <path d="M59,42 Q58,55 57,68 Q56.5,72 57,76 Q57,78 58,78 Q59,78 59,76 Q59.5,72 59,68 Q60,55 61,42 Z"/>
+        <path d="M57,38 Q48,42 38,48 Q32,52 28,56 Q26,58 28,57 Q34,53 40,48 Q48,42 56,40 Z"/>
+        <path d="M57.5,78 Q57,80 58,81 Q59,80 58.5,78 Z"/>
+      </g>
+    </svg>
+    <h1>LUNA</h1>
+    <div class="subtitle">Barre &amp; Pilates</div>
+    <div class="tagline">Boutique Studio</div>
+    <a href="#rezervace" class="btn btn-outline" style="color:var(--gold-light); border-color:var(--gold-light);">Rezervovat lekci</a>
+  </div>
+</section>
+
+<!-- O NÁS -->
+<section id="o-nas">
+  <div class="container">
+    <div class="section-header">
+      <h2>O nas</h2>
+      <div class="line"></div>
+      <p>Misto, kde se sila potkava s eleganci</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>LUNA je komorni studio v srdci prazskych Holesovic, kde verime, ze pohyb je forma sebevyjadreni. Nase lekce spojuji prvky baletu, pilates a funkcniho treninku do unikatniho zazitku, ktery posiluje telo i mysl.</p>
+        <p>Cvicime v malych skupinach, aby se kazde klientce dostalo individualni pozornosti. Nase instruktorky jsou certifikovane odbornice s letitymi zkusenostmi v barre, pilates a tanci.</p>
+        <p>At uz jste uplne zacatecnice nebo pokrocila sportovkyne, u nas si najdete svou lekci. Prijdte objevit silu, graci a komunitu, ktera vas bude inspirovat.</p>
+      </div>
+      <div>
+        <blockquote class="about-quote">
+          &ldquo;Kazdy pohyb je krokem k silnejsi a elegantnejsi verzi sebe sama.&rdquo;
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- LEKCE -->
+<section id="lekce">
+  <div class="container">
+    <div class="section-header">
+      <h2>Nase lekce</h2>
+      <div class="line"></div>
+      <p>Vyberte si lekci, ktera odpovida vasim cilum a urovni zdatnosti</p>
+    </div>
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-icon">
+          <svg width="40" height="40" viewBox="0 0 28 40"><circle cx="14" cy="5" r="3.5" fill="currentColor"/><path d="M13,8 Q12,16 11,22 L15,22 Q14,16 15,8 Z" fill="currentColor"/><path d="M15,10 Q20,8 25,6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M12,10 Q7,12 3,15" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M12,22 Q11,30 12,36" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M14,20 Q8,24 4,28" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Barre</h3>
+        <p>Fuze pilates, baletu a kardio treninku. Lekce u tyce, ktera formuje cele telo, posiluje hluboky stabilizacni system a zlepsuje drzeni tela.</p>
+        <a href="#rezervace" class="btn btn-outline">Rezervovat</a>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40"><rect x="2" y="18" width="36" height="4" rx="2" fill="currentColor" opacity="0.3"/><circle cx="12" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="28" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Pilates Reformer</h3>
+        <p>Cilena prace na reformeru pro maximalni efektivitu. Posiluje svaly, zlepsuje flexibilitu a pomaha s rehabilitaci. Vhodne pro vsechny urovne.</p>
+        <a href="#rezervace" class="btn btn-outline">Rezervovat</a>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40"><rect x="2" y="18" width="36" height="4" rx="2" fill="currentColor" opacity="0.3"/><circle cx="20" cy="10" r="3" fill="currentColor"/><path d="M19,13 Q18,18 20,22 Q22,18 21,13 Z" fill="currentColor"/><path d="M21,15 Q25,13 28,12" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M19,15 Q15,13 12,12" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Reformer Barre</h3>
+        <p>Kombinace obou metod v jedne lekci. Propojeni prace na reformeru s cviky u tyce pro komplexni trenink celeho tela.</p>
+        <a href="#rezervace" class="btn btn-outline">Rezervovat</a>
+      </div>
+      <div class="class-card">
+        <div class="class-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40"><path d="M20,4 C12,4 6,10 6,18 C6,28 20,38 20,38 C20,38 34,28 34,18 C34,10 28,4 20,4 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14,18 Q20,12 26,18" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Yoga &amp; Stretch</h3>
+        <p>Joga a protahovani pro zlepseni flexibility, uvolneni napeti a celkovou regeneraci. Idealni doplnek k intenzivnejsim lekcim.</p>
+        <a href="#rezervace" class="btn btn-outline">Rezervovat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ROZVRH -->
+<section id="rozvrh">
+  <div class="container">
+    <div class="section-header">
+      <h2>Rozvrh</h2>
+      <div class="line"></div>
+      <p>Prehled tydenniho rozvrhu nasich lekci</p>
+    </div>
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <div class="day">Pondeli</div>
+        <div class="schedule-item"><span>Barre</span><span class="time">9:00</span></div>
+        <div class="schedule-item"><span>Pilates Reformer</span><span class="time">10:30</span></div>
+        <div class="schedule-item"><span>Barre</span><span class="time">17:30</span></div>
+        <div class="schedule-item"><span>Reformer Barre</span><span class="time">19:00</span></div>
+      </div>
+      <div class="schedule-card">
+        <div class="day">Utery</div>
+        <div class="schedule-item"><span>Pilates Reformer</span><span class="time">9:00</span></div>
+        <div class="schedule-item"><span>Yoga &amp; Stretch</span><span class="time">10:30</span></div>
+        <div class="schedule-item"><span>Barre</span><span class="time">17:30</span></div>
+        <div class="schedule-item"><span>Pilates Reformer</span><span class="time">19:00</span></div>
+      </div>
+      <div class="schedule-card">
+        <div class="day">Streda</div>
+        <div class="schedule-item"><span>Barre</span><span class="time">9:00</span></div>
+        <div class="schedule-item"><span>Reformer Barre</span><span class="time">10:30</span></div>
+        <div class="schedule-item"><span>Pilates Reformer</span><span class="time">17:30</span></div>
+        <div class="schedule-item"><span>Barre</span><span class="time">19:00</span></div>
+      </div>
+      <div class="schedule-card">
+        <div class="day">Ctvrtek</div>
+        <div class="schedule-item"><span>Yoga &amp; Stretch</span><span class="time">9:00</span></div>
+        <div class="schedule-item"><span>Pilates Reformer</span><span class="time">10:30</span></div>
+        <div class="schedule-item"><span>Barre</span><span class="time">17:30</span></div>
+        <div class="schedule-item"><span>Reformer Barre</span><span class="time">19:00</span></div>
+      </div>
+      <div class="schedule-card">
+        <div class="day">Patek</div>
+        <div class="schedule-item"><span>Barre</span><span class="time">9:00</span></div>
+        <div class="schedule-item"><span>Pilates Reformer</span><span class="time">10:30</span></div>
+        <div class="schedule-item"><span>Yoga &amp; Stretch</span><span class="time">17:00</span></div>
+      </div>
+      <div class="schedule-card">
+        <div class="day">Sobota</div>
+        <div class="schedule-item"><span>Barre</span><span class="time">9:00</span></div>
+        <div class="schedule-item"><span>Reformer Barre</span><span class="time">10:30</span></div>
+      </div>
+    </div>
+    <div class="schedule-note">
+      Aktualni rozvrh a dostupnost najdete v nasem <a href="https://petr-radous.reservio.com" target="_blank" rel="noopener">rezervacnim systemu</a>.
+    </div>
+  </div>
+</section>
+
+<!-- REZERVACE -->
+<section class="booking" id="rezervace">
+  <div class="container">
+    <div class="section-header">
+      <h2>Rezervace</h2>
+      <div class="line"></div>
+      <p>Rezervujte si svou lekci online</p>
+    </div>
+    <div class="iframe-container">
+      <iframe src="https://petr-radous.reservio.com" title="Rezervace LUNA Studio" loading="lazy"></iframe>
+    </div>
+    <div class="booking-mobile-cta">
+      <p style="margin-bottom:24px; color:var(--medium-gray); font-size:0.9rem;">Pro rezervaci lekce kliknete na tlacitko nize.</p>
+      <a href="https://petr-radous.reservio.com" target="_blank" rel="noopener" class="btn btn-primary">Rezervovat lekci</a>
+    </div>
+  </div>
+</section>
+
+<!-- CENÍK -->
+<section id="cenik">
+  <div class="container">
+    <div class="section-header">
+      <h2>Cenik</h2>
+      <div class="line"></div>
+      <p>Vyberte si variantu, ktera vam nejlepe vyhovuje</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Jednotliva lekce</h3>
+        <div class="price-amount">450 Kc</div>
+        <div class="price-unit">za jednu lekci</div>
+        <ul class="price-list">
+          <li><span>Barre / Pilates / Yoga</span><span class="val">450 Kc</span></li>
+          <li><span>Reformer lekce</span><span class="val">400 Kc</span></li>
+        </ul>
+        <a href="#rezervace" class="btn btn-outline">Rezervovat</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Nejoblibenejsi</div>
+        <h3>Permanentka</h3>
+        <div class="price-amount">4 300 Kc</div>
+        <div class="price-unit">10 lekci / 3 mesice</div>
+        <ul class="price-list">
+          <li><span>10 lekci</span><span class="val">4 300 Kc</span></li>
+          <li><span>20 lekci</span><span class="val">8 600 Kc</span></li>
+          <li><span>Platnost</span><span class="val">3 mesice</span></li>
+        </ul>
+        <a href="#rezervace" class="btn btn-primary">Zakoupit</a>
+      </div>
+      <div class="price-card">
+        <h3>Individualni lekce</h3>
+        <div class="price-amount">2 000 Kc</div>
+        <div class="price-unit">privatni lekce s instruktorem</div>
+        <ul class="price-list">
+          <li><span>1 osoba</span><span class="val">2 000 Kc</span></li>
+          <li><span>2 osoby</span><span class="val">3 000 Kc</span></li>
+        </ul>
+        <a href="#kontakt" class="btn btn-outline">Kontaktovat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Kontakt</h2>
+      <div class="line"></div>
+      <p>Budeme radi, kdyz se nam ozvete</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Kde nas najdete</h3>
+        <div class="contact-item">
+          <span class="icon">&#9906;</span>
+          <div>
+            <strong>LUNA Barre &amp; Pilates</strong><br>
+            Jankovcova 16b/1639<br>
+            170 00 Praha 7 &ndash; Holesovice
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="icon">&#9742;</span>
+          <div><a href="tel:+420608438728">+420 608 438 728</a></div>
+        </div>
+        <div class="contact-item">
+          <span class="icon">&#9993;</span>
+          <div><a href="mailto:info@barrestudio.cz">info@barrestudio.cz</a></div>
+        </div>
+        <div class="contact-item">
+          <span class="icon">&#128652;</span>
+          <div>
+            <strong>MHD:</strong> Tramvaj Ortenovo namesti (2 min chuze)<br>
+            Metro C &ndash; Vltavska (8 min chuze)
+          </div>
+        </div>
+        <div class="contact-social">
+          <a href="https://instagram.com/luna.studio" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://facebook.com/luna.studio" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.1234!2d14.4456!3d50.1045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSmFua292Y292YSAxNmIvMTYzOSwgMTcwIDAwIFByYWhhIDct!5e0!3m2!1scs!2scz!4v1" title="Mapa LUNA Studio" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand">LUNA</div>
+      <div class="sub">Barre &amp; Pilates &middot; Boutique Studio</div>
+    </div>
+    <div class="footer-links">
+      <a href="#o-nas">O nas</a>
+      <a href="#lekce">Lekce</a>
+      <a href="#rozvrh">Rozvrh</a>
+      <a href="#rezervace">Rezervace</a>
+      <a href="#cenik">Cenik</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 LUNA Barre &amp; Pilates. Vsechna prava vyhrazena.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const nav = document.getElementById('nav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  const navHeight = 72;
+
+  // Scroll → shrink nav
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Hamburger toggle
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Smooth scroll with offset
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var id = this.getAttribute('href');
+      if (id === '#') return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+    });
+  });
+
+  // IntersectionObserver → active nav link
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.getAttribute('id');
+        navLinks.forEach(function(link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -60% 0px' });
+
+  sections.forEach(function(section) { observer.observe(section); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNA Barre & Pilates — Brand Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-pale: #F5EDE0;
+    --nude: #D4B896;
+    --nude-light: #F0E6DA;
+    --blush: #E8C4B8;
+    --blush-light: #F5E1DA;
+    --black: #1A1A1A;
+    --charcoal: #2D2D2D;
+    --dark-gray: #4A4A4A;
+    --medium-gray: #8A8A8A;
+    --light-gray: #D4D4D4;
+    --off-white: #FAF8F5;
+    --white: #FFFFFF;
+    --moon-gradient-start: #D4B896;
+    --moon-gradient-end: #E8D5B0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--off-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 50%, #3a3028 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 80px 40px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,184,150,0.1) 0%, transparent 70%);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+  .hero .tagline {
+    font-size: 0.85rem;
+    color: var(--medium-gray);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .hero .sparkle {
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin: 20px 0;
+    letter-spacing: 20px;
+  }
+  .hero .doc-label {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 30px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ---- SECTIONS ---- */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+  .section-header .line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 15px auto;
+  }
+  .section-header p {
+    color: var(--medium-gray);
+    font-size: 0.9rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--gold-light);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ---- COLOR PALETTE ---- */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .color-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    transition: transform 0.3s;
+  }
+  .color-card:hover { transform: translateY(-4px); }
+  .color-swatch {
+    height: 120px;
+    position: relative;
+  }
+  .color-swatch.bordered {
+    border: 1px solid var(--light-gray);
+    border-bottom: none;
+  }
+  .color-info {
+    padding: 16px 20px;
+  }
+  .color-info .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .color-info .hex {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  .color-info .usage {
+    font-size: 0.75rem;
+    color: var(--medium-gray);
+    font-weight: 300;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  .palette-group-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 40px;
+  }
+  .palette-group-label:first-child { margin-top: 0; }
+
+  /* ---- TYPOGRAPHY ---- */
+  .type-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  .type-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .type-card .font-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .type-card .font-name {
+    font-size: 2.2rem;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .type-card .font-meta {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    margin-bottom: 20px;
+  }
+  .type-card .alphabet {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+  .type-card.playfair .font-name { font-family: 'Playfair Display', serif; font-weight: 400; }
+  .type-card.playfair .alphabet { font-family: 'Playfair Display', serif; }
+  .type-card.cormorant .font-name { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+  .type-card.cormorant .alphabet { font-family: 'Cormorant Garamond', serif; }
+  .type-card.raleway .font-name { font-family: 'Raleway', sans-serif; font-weight: 300; }
+  .type-card.raleway .alphabet { font-family: 'Raleway', sans-serif; }
+
+  .type-hierarchy {
+    margin-top: 50px;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .type-hierarchy .font-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  .type-sample {
+    display: flex;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--nude-light);
+  }
+  .type-sample:last-child { border-bottom: none; }
+  .type-sample .label {
+    width: 140px;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .type-sample .example { flex: 1; color: var(--black); }
+  .type-sample .spec {
+    width: 200px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--medium-gray);
+    font-weight: 300;
+  }
+
+  /* ---- LOGO USAGE ---- */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .logo-variant {
+    border-radius: 12px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    position: relative;
+  }
+  .logo-variant .variant-label {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .logo-variant.on-white {
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .logo-variant.on-white .variant-label { color: var(--medium-gray); }
+  .logo-variant.on-dark {
+    background: var(--black);
+  }
+  .logo-variant.on-dark .variant-label { color: var(--medium-gray); }
+  .logo-variant.on-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--nude) 100%);
+  }
+  .logo-variant.on-gold .variant-label { color: rgba(255,255,255,0.7); }
+  .logo-variant.on-image {
+    background: linear-gradient(135deg, #8a7d6b 0%, #a09080 50%, #b8a898 100%);
+  }
+  .logo-variant.on-image .variant-label { color: rgba(255,255,255,0.7); }
+
+  .logo-mock {
+    text-align: center;
+  }
+  .logo-mock .logo-svg {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 12px;
+  }
+  .logo-mock .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.25em;
+    font-weight: 400;
+  }
+  .logo-mock .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+  .logo-mock .boutique {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .on-white .logo-mock .brand { color: var(--black); }
+  .on-white .logo-mock .sub { color: var(--gold); }
+  .on-white .logo-mock .boutique { color: var(--dark-gray); }
+  .on-white .logo-svg .moon-outer { stroke: var(--gold-light); }
+  .on-white .logo-svg .moon-crescent { fill: var(--nude); }
+  .on-white .logo-svg .dancer { fill: var(--black); }
+  .on-white .logo-svg .sparkle { fill: var(--nude); }
+
+  .on-dark .logo-mock .brand { color: var(--white); }
+  .on-dark .logo-mock .sub { color: var(--gold); }
+  .on-dark .logo-mock .boutique { color: var(--medium-gray); }
+  .on-dark .logo-svg .moon-outer { stroke: var(--gold); }
+  .on-dark .logo-svg .moon-crescent { fill: var(--gold); opacity: 0.4; }
+  .on-dark .logo-svg .dancer { fill: var(--white); }
+  .on-dark .logo-svg .sparkle { fill: var(--gold); }
+
+  .on-gold .logo-mock .brand { color: var(--white); }
+  .on-gold .logo-mock .sub { color: rgba(255,255,255,0.85); }
+  .on-gold .logo-mock .boutique { color: rgba(255,255,255,0.7); }
+  .on-gold .logo-svg .moon-outer { stroke: var(--white); }
+  .on-gold .logo-svg .moon-crescent { fill: rgba(255,255,255,0.3); }
+  .on-gold .logo-svg .dancer { fill: var(--white); }
+  .on-gold .logo-svg .sparkle { fill: var(--white); }
+
+  .on-image .logo-mock .brand { color: var(--white); }
+  .on-image .logo-mock .sub { color: rgba(255,255,255,0.85); }
+  .on-image .logo-mock .boutique { color: rgba(255,255,255,0.7); }
+  .on-image .logo-svg .moon-outer { stroke: var(--white); }
+  .on-image .logo-svg .moon-crescent { fill: rgba(255,255,255,0.3); }
+  .on-image .logo-svg .dancer { fill: var(--white); }
+  .on-image .logo-svg .sparkle { fill: var(--white); }
+
+  /* ---- SPACING & CLEAR SPACE ---- */
+  .spacing-demo {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .spacing-box {
+    display: inline-block;
+    position: relative;
+    padding: 40px;
+    border: 2px dashed var(--gold-light);
+    margin: 30px auto;
+  }
+  .spacing-box .inner {
+    padding: 30px 50px;
+    background: var(--off-white);
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    color: var(--black);
+  }
+  .spacing-label {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* ---- ELEMENTS / COMPONENTS ---- */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .element-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .element-card .card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 14px 36px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    margin: 6px 8px 6px 0;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 0;
+  }
+  .btn-primary:hover { background: #b8964f; }
+  .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+  }
+  .btn-outline:hover { background: var(--gold); color: var(--white); }
+  .btn-dark {
+    background: var(--black);
+    color: var(--white);
+  }
+  .btn-dark:hover { background: var(--charcoal); }
+  .btn-pill {
+    border-radius: 50px;
+    background: var(--gold);
+    color: var(--white);
+  }
+
+  /* Icons / decorative */
+  .icon-row {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .icon-item {
+    text-align: center;
+  }
+  .icon-item .icon-symbol {
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .icon-item .icon-label {
+    font-size: 0.7rem;
+    color: var(--medium-gray);
+    letter-spacing: 0.05em;
+  }
+
+  /* Patterns */
+  .pattern-row {
+    display: flex;
+    gap: 20px;
+  }
+  .pattern-swatch {
+    width: 100px; height: 100px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pattern-swatch.moon-pattern {
+    background: var(--gold-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pattern-swatch.stars-pattern {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pattern-swatch.gradient-pattern {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--nude) 50%, var(--blush) 100%);
+  }
+
+  /* ---- SOCIAL MOCKUPS ---- */
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .social-post {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .social-post .post-image {
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+  }
+  .social-post .post-caption {
+    padding: 16px 20px;
+  }
+  .social-post .post-caption .handle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .social-post .post-caption .text {
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .post-1 .post-image {
+    background: linear-gradient(135deg, var(--gold-pale) 0%, var(--nude-light) 100%);
+  }
+  .post-2 .post-image {
+    background: var(--black);
+  }
+  .post-3 .post-image {
+    background: linear-gradient(135deg, var(--blush-light) 0%, var(--nude-light) 100%);
+  }
+  .post-image .post-brand {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+  }
+  .post-image .post-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+  }
+  .post-image .post-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    max-width: 200px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .post-image .post-cta {
+    margin-top: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid;
+  }
+
+  /* ---- STORY MOCKUP ---- */
+  .story-row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .story-mock {
+    width: 200px;
+    height: 356px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  }
+  .story-mock .story-content {
+    text-align: center;
+    z-index: 1;
+  }
+  .story-1 { background: linear-gradient(180deg, var(--gold-pale) 0%, var(--blush-light) 100%); }
+  .story-2 { background: var(--black); }
+  .story-3 { background: linear-gradient(180deg, var(--nude-light) 0%, var(--gold-pale) 100%); }
+
+  /* ---- DO / DON'T ---- */
+  .dos-donts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .do-card, .dont-card {
+    border-radius: 12px;
+    padding: 30px;
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .do-card .card-label { color: #6a9a5b; }
+  .dont-card .card-label { color: #c4645b; }
+  .rule-list {
+    list-style: none;
+    padding: 0;
+  }
+  .rule-list li {
+    padding: 8px 0;
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    font-weight: 300;
+    border-bottom: 1px solid var(--nude-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rule-list li:last-child { border-bottom: none; }
+  .rule-list .icon-check { color: #6a9a5b; }
+  .rule-list .icon-x { color: #c4645b; }
+
+  /* ---- PHOTOGRAPHY DIRECTION ---- */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .photo-card {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 180px;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    position: relative;
+  }
+  .photo-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.4) 100%);
+  }
+  .photo-card span {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+  .photo-1 { background: linear-gradient(135deg, #d4c0a8 0%, #c2a88c 100%); }
+  .photo-2 { background: linear-gradient(135deg, #e8d5c0 0%, #d4b89c 100%); }
+  .photo-3 { background: linear-gradient(135deg, #c8b4a0 0%, #a89480 100%); }
+  .photo-4 { background: linear-gradient(135deg, #f0e0d0 0%, #d8c4b0 100%); }
+
+  /* ---- TONE OF VOICE ---- */
+  .tone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .tone-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+  .tone-card .tone-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .tone-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .tone-card p {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    background: var(--black);
+    color: var(--medium-gray);
+    text-align: center;
+    padding: 50px 40px;
+  }
+  .footer .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .footer .sub {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+  .footer .note {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: var(--dark-gray);
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .type-showcase, .logo-grid, .elements-grid, .dos-donts { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .tone-grid { grid-template-columns: 1fr; }
+    .story-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>LUNA</h1>
+  <div class="subtitle">Barre & Pilates</div>
+  <div class="tagline">Boutique Studio</div>
+  <div class="sparkle">&#10022; &nbsp; &#10022; &nbsp; &#10022;</div>
+  <div class="doc-label">Brand Design System &mdash; 2026</div>
+</header>
+
+<!-- 1. COLOR PALETTE -->
+<section class="section">
+  <div class="section-header">
+    <h2>Color Palette</h2>
+    <div class="line"></div>
+    <p>A warm, luxurious palette inspired by moonlight, nude tones, and quiet elegance.</p>
+  </div>
+
+  <div class="palette-group-label">Primary</div>
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #C9A96E;"></div>
+      <div class="color-info">
+        <div class="name">Luna Gold</div>
+        <div class="hex">#C9A96E</div>
+        <div class="usage">Primary accent, CTAs, highlights</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1A1A1A;"></div>
+      <div class="color-info">
+        <div class="name">Midnight Black</div>
+        <div class="hex">#1A1A1A</div>
+        <div class="usage">Headlines, logo, primary text</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch bordered" style="background: #FAF8F5;"></div>
+      <div class="color-info">
+        <div class="name">Moonlight</div>
+        <div class="hex">#FAF8F5</div>
+        <div class="usage">Background, negative space</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-group-label">Secondary</div>
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #D4B896;"></div>
+      <div class="color-info">
+        <div class="name">Warm Nude</div>
+        <div class="hex">#D4B896</div>
+        <div class="usage">Moon crescent, decorative elements</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #E8D5B0;"></div>
+      <div class="color-info">
+        <div class="name">Soft Gold</div>
+        <div class="hex">#E8D5B0</div>
+        <div class="usage">Subtle accents, hover states</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #E8C4B8;"></div>
+      <div class="color-info">
+        <div class="name">Rose Blush</div>
+        <div class="hex">#E8C4B8</div>
+        <div class="usage">Warm accent, feminine touches</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F5EDE0;"></div>
+      <div class="color-info">
+        <div class="name">Champagne</div>
+        <div class="hex">#F5EDE0</div>
+        <div class="usage">Cards, sections, light backgrounds</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-group-label">Neutrals</div>
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #4A4A4A;"></div>
+      <div class="color-info">
+        <div class="name">Dark Gray</div>
+        <div class="hex">#4A4A4A</div>
+        <div class="usage">Body text</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #8A8A8A;"></div>
+      <div class="color-info">
+        <div class="name">Medium Gray</div>
+        <div class="hex">#8A8A8A</div>
+        <div class="usage">Captions, meta text</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #D4D4D4;"></div>
+      <div class="color-info">
+        <div class="name">Light Gray</div>
+        <div class="hex">#D4D4D4</div>
+        <div class="usage">Borders, dividers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 2. TYPOGRAPHY -->
+<section class="section">
+  <div class="section-header">
+    <h2>Typography</h2>
+    <div class="line"></div>
+    <p>Three typefaces carefully selected to balance elegance, readability, and refinement.</p>
+  </div>
+
+  <div class="type-showcase">
+    <div class="type-card playfair">
+      <div class="font-label">Primary &mdash; Display</div>
+      <div class="font-name">Playfair Display</div>
+      <div class="font-meta">Regular 400 &middot; Medium 500 &middot; SemiBold 600</div>
+      <div class="alphabet">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii<br>
+        Jj Kk Ll Mm Nn Oo Pp Qq Rr<br>
+        Ss Tt Uu Vv Ww Xx Yy Zz<br>
+        1 2 3 4 5 6 7 8 9 0
+      </div>
+    </div>
+    <div class="type-card cormorant">
+      <div class="font-label">Secondary &mdash; Subtitle</div>
+      <div class="font-name">Cormorant Garamond</div>
+      <div class="font-meta">Light 300 &middot; Regular 400 &middot; Medium 500</div>
+      <div class="alphabet">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii<br>
+        Jj Kk Ll Mm Nn Oo Pp Qq Rr<br>
+        Ss Tt Uu Vv Ww Xx Yy Zz<br>
+        1 2 3 4 5 6 7 8 9 0
+      </div>
+    </div>
+  </div>
+
+  <div class="type-showcase" style="margin-top: 30px;">
+    <div class="type-card raleway" style="grid-column: 1 / -1;">
+      <div class="font-label">Body &mdash; UI</div>
+      <div class="font-name">Raleway</div>
+      <div class="font-meta">Light 300 &middot; Regular 400 &middot; Medium 500 &middot; SemiBold 600</div>
+      <div class="alphabet">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz &middot; 1 2 3 4 5 6 7 8 9 0
+      </div>
+    </div>
+  </div>
+
+  <div class="type-hierarchy">
+    <div class="font-label">Type Hierarchy</div>
+    <div class="type-sample">
+      <span class="label">H1 / Hero</span>
+      <span class="example" style="font-family:'Playfair Display',serif; font-size:2.5rem; letter-spacing:0.2em; font-weight:400;">LUNA</span>
+      <span class="spec">Playfair Display &middot; 40px &middot; 0.2em</span>
+    </div>
+    <div class="type-sample">
+      <span class="label">H2 / Section</span>
+      <span class="example" style="font-family:'Playfair Display',serif; font-size:1.8rem; letter-spacing:0.12em; font-weight:400;">Barre Classes</span>
+      <span class="spec">Playfair Display &middot; 28px &middot; 0.12em</span>
+    </div>
+    <div class="type-sample">
+      <span class="label">Subtitle</span>
+      <span class="example" style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; letter-spacing:0.1em; font-weight:300; color:var(--gold);">Barre & Pilates</span>
+      <span class="spec">Cormorant Garamond &middot; 20px &middot; 300</span>
+    </div>
+    <div class="type-sample">
+      <span class="label">Body</span>
+      <span class="example" style="font-family:'Raleway',sans-serif; font-size:0.95rem; font-weight:300;">Experience the harmony of strength and grace in every movement.</span>
+      <span class="spec">Raleway &middot; 15px &middot; 300</span>
+    </div>
+    <div class="type-sample">
+      <span class="label">Caption</span>
+      <span class="example" style="font-family:'Raleway',sans-serif; font-size:0.75rem; font-weight:400; letter-spacing:0.15em; text-transform:uppercase; color:var(--medium-gray);">MONDAY &mdash; FRIDAY 7:00 &ndash; 21:00</span>
+      <span class="spec">Raleway &middot; 12px &middot; uppercase</span>
+    </div>
+    <div class="type-sample">
+      <span class="label">CTA / Button</span>
+      <span class="example" style="font-family:'Raleway',sans-serif; font-size:0.75rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);">BOOK YOUR CLASS</span>
+      <span class="spec">Raleway &middot; 12px &middot; 500 &middot; uppercase</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 3. LOGO USAGE -->
+<section class="section">
+  <div class="section-header">
+    <h2>Logo Usage</h2>
+    <div class="line"></div>
+    <p>The logo should always maintain clear space and visual integrity across all backgrounds.</p>
+  </div>
+
+  <div class="logo-grid">
+    <div class="logo-variant on-white">
+      <span class="variant-label">On White / Light</span>
+      <div class="logo-mock">
+        <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Crescent moon -->
+          <circle class="moon-outer" cx="55" cy="55" r="48" fill="none" stroke-width="1.5"/>
+          <path class="moon-crescent" d="M25,12 A48,48 0 0,1 25,98 A38,38 0 0,0 25,12 Z" opacity="0.5"/>
+          <!-- Sparkle stars -->
+          <path class="sparkle" d="M18,22 L19.5,18 L21,22 L25,23.5 L21,25 L19.5,29 L18,25 L14,23.5 Z" />
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.7) translate(8,18)"/>
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.5) translate(40,10)"/>
+          <!-- Dancer silhouette (arabesque pose) -->
+          <g class="dancer" transform="translate(52,18) scale(0.68)">
+            <!-- Head -->
+            <circle cx="62" cy="8" r="5.5"/>
+            <!-- Hair bun -->
+            <circle cx="65" cy="4" r="3"/>
+            <!-- Torso -->
+            <path d="M60,13 Q58,25 56,38 Q55,42 57,42 L63,42 Q65,42 64,38 Q62,28 64,13 Z"/>
+            <!-- Left arm (extended forward) -->
+            <path d="M63,16 Q72,14 82,10 Q84,9 83,11 Q78,16 68,20 Z"/>
+            <!-- Right arm (extended back) -->
+            <path d="M58,16 Q50,18 42,22 Q40,23 41,21 Q46,15 54,14 Z"/>
+            <!-- Standing leg (en pointe) -->
+            <path d="M59,42 Q58,55 57,68 Q56.5,72 57,76 Q57,78 58,78 Q59,78 59,76 Q59.5,72 59,68 Q60,55 61,42 Z"/>
+            <!-- Extended leg (back arabesque) -->
+            <path d="M57,38 Q48,42 38,48 Q32,52 28,56 Q26,58 28,57 Q34,53 40,48 Q48,42 56,40 Z"/>
+            <!-- Foot point -->
+            <path d="M57.5,78 Q57,80 58,81 Q59,80 58.5,78 Z"/>
+          </g>
+        </svg>
+        <div class="brand">LUNA</div>
+        <div class="sub">Barre & Pilates</div>
+        <div class="boutique">Boutique Studio</div>
+      </div>
+    </div>
+    <div class="logo-variant on-dark">
+      <span class="variant-label">On Dark</span>
+      <div class="logo-mock">
+        <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Crescent moon -->
+          <circle class="moon-outer" cx="55" cy="55" r="48" fill="none" stroke-width="1.5"/>
+          <path class="moon-crescent" d="M25,12 A48,48 0 0,1 25,98 A38,38 0 0,0 25,12 Z" opacity="0.5"/>
+          <!-- Sparkle stars -->
+          <path class="sparkle" d="M18,22 L19.5,18 L21,22 L25,23.5 L21,25 L19.5,29 L18,25 L14,23.5 Z" />
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.7) translate(8,18)"/>
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.5) translate(40,10)"/>
+          <!-- Dancer silhouette (arabesque pose) -->
+          <g class="dancer" transform="translate(52,18) scale(0.68)">
+            <!-- Head -->
+            <circle cx="62" cy="8" r="5.5"/>
+            <!-- Hair bun -->
+            <circle cx="65" cy="4" r="3"/>
+            <!-- Torso -->
+            <path d="M60,13 Q58,25 56,38 Q55,42 57,42 L63,42 Q65,42 64,38 Q62,28 64,13 Z"/>
+            <!-- Left arm (extended forward) -->
+            <path d="M63,16 Q72,14 82,10 Q84,9 83,11 Q78,16 68,20 Z"/>
+            <!-- Right arm (extended back) -->
+            <path d="M58,16 Q50,18 42,22 Q40,23 41,21 Q46,15 54,14 Z"/>
+            <!-- Standing leg (en pointe) -->
+            <path d="M59,42 Q58,55 57,68 Q56.5,72 57,76 Q57,78 58,78 Q59,78 59,76 Q59.5,72 59,68 Q60,55 61,42 Z"/>
+            <!-- Extended leg (back arabesque) -->
+            <path d="M57,38 Q48,42 38,48 Q32,52 28,56 Q26,58 28,57 Q34,53 40,48 Q48,42 56,40 Z"/>
+            <!-- Foot point -->
+            <path d="M57.5,78 Q57,80 58,81 Q59,80 58.5,78 Z"/>
+          </g>
+        </svg>
+        <div class="brand">LUNA</div>
+        <div class="sub">Barre & Pilates</div>
+        <div class="boutique">Boutique Studio</div>
+      </div>
+    </div>
+    <div class="logo-variant on-gold">
+      <span class="variant-label">On Gold / Gradient</span>
+      <div class="logo-mock">
+        <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Crescent moon -->
+          <circle class="moon-outer" cx="55" cy="55" r="48" fill="none" stroke-width="1.5"/>
+          <path class="moon-crescent" d="M25,12 A48,48 0 0,1 25,98 A38,38 0 0,0 25,12 Z" opacity="0.5"/>
+          <!-- Sparkle stars -->
+          <path class="sparkle" d="M18,22 L19.5,18 L21,22 L25,23.5 L21,25 L19.5,29 L18,25 L14,23.5 Z" />
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.7) translate(8,18)"/>
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.5) translate(40,10)"/>
+          <!-- Dancer silhouette (arabesque pose) -->
+          <g class="dancer" transform="translate(52,18) scale(0.68)">
+            <!-- Head -->
+            <circle cx="62" cy="8" r="5.5"/>
+            <!-- Hair bun -->
+            <circle cx="65" cy="4" r="3"/>
+            <!-- Torso -->
+            <path d="M60,13 Q58,25 56,38 Q55,42 57,42 L63,42 Q65,42 64,38 Q62,28 64,13 Z"/>
+            <!-- Left arm (extended forward) -->
+            <path d="M63,16 Q72,14 82,10 Q84,9 83,11 Q78,16 68,20 Z"/>
+            <!-- Right arm (extended back) -->
+            <path d="M58,16 Q50,18 42,22 Q40,23 41,21 Q46,15 54,14 Z"/>
+            <!-- Standing leg (en pointe) -->
+            <path d="M59,42 Q58,55 57,68 Q56.5,72 57,76 Q57,78 58,78 Q59,78 59,76 Q59.5,72 59,68 Q60,55 61,42 Z"/>
+            <!-- Extended leg (back arabesque) -->
+            <path d="M57,38 Q48,42 38,48 Q32,52 28,56 Q26,58 28,57 Q34,53 40,48 Q48,42 56,40 Z"/>
+            <!-- Foot point -->
+            <path d="M57.5,78 Q57,80 58,81 Q59,80 58.5,78 Z"/>
+          </g>
+        </svg>
+        <div class="brand">LUNA</div>
+        <div class="sub">Barre & Pilates</div>
+        <div class="boutique">Boutique Studio</div>
+      </div>
+    </div>
+    <div class="logo-variant on-image">
+      <span class="variant-label">On Photography</span>
+      <div class="logo-mock">
+        <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Crescent moon -->
+          <circle class="moon-outer" cx="55" cy="55" r="48" fill="none" stroke-width="1.5"/>
+          <path class="moon-crescent" d="M25,12 A48,48 0 0,1 25,98 A38,38 0 0,0 25,12 Z" opacity="0.5"/>
+          <!-- Sparkle stars -->
+          <path class="sparkle" d="M18,22 L19.5,18 L21,22 L25,23.5 L21,25 L19.5,29 L18,25 L14,23.5 Z" />
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.7) translate(8,18)"/>
+          <path class="sparkle" d="M10,38 L11,35.5 L12,38 L14.5,39 L12,40 L11,42.5 L10,40 L7.5,39 Z" transform="scale(0.5) translate(40,10)"/>
+          <!-- Dancer silhouette (arabesque pose) -->
+          <g class="dancer" transform="translate(52,18) scale(0.68)">
+            <!-- Head -->
+            <circle cx="62" cy="8" r="5.5"/>
+            <!-- Hair bun -->
+            <circle cx="65" cy="4" r="3"/>
+            <!-- Torso -->
+            <path d="M60,13 Q58,25 56,38 Q55,42 57,42 L63,42 Q65,42 64,38 Q62,28 64,13 Z"/>
+            <!-- Left arm (extended forward) -->
+            <path d="M63,16 Q72,14 82,10 Q84,9 83,11 Q78,16 68,20 Z"/>
+            <!-- Right arm (extended back) -->
+            <path d="M58,16 Q50,18 42,22 Q40,23 41,21 Q46,15 54,14 Z"/>
+            <!-- Standing leg (en pointe) -->
+            <path d="M59,42 Q58,55 57,68 Q56.5,72 57,76 Q57,78 58,78 Q59,78 59,76 Q59.5,72 59,68 Q60,55 61,42 Z"/>
+            <!-- Extended leg (back arabesque) -->
+            <path d="M57,38 Q48,42 38,48 Q32,52 28,56 Q26,58 28,57 Q34,53 40,48 Q48,42 56,40 Z"/>
+            <!-- Foot point -->
+            <path d="M57.5,78 Q57,80 58,81 Q59,80 58.5,78 Z"/>
+          </g>
+        </svg>
+        <div class="brand">LUNA</div>
+        <div class="sub">Barre & Pilates</div>
+        <div class="boutique">Boutique Studio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clear space -->
+  <div class="spacing-demo" style="margin-top: 40px;">
+    <div class="font-label" style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:20px;">Minimum Clear Space</div>
+    <div class="spacing-box">
+      <div class="spacing-label" style="position:absolute; top:10px; left:50%; transform:translateX(-50%);">1x</div>
+      <div class="spacing-label" style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%);">1x</div>
+      <div class="spacing-label" style="position:absolute; left:10px; top:50%; transform:translateY(-50%);">1x</div>
+      <div class="spacing-label" style="position:absolute; right:10px; top:50%; transform:translateY(-50%);">1x</div>
+      <div class="inner">LUNA</div>
+    </div>
+    <p style="font-size:0.8rem; color:var(--medium-gray); font-weight:300; margin-top:10px;">
+      Minimum clear space = height of the letter "L" in the logo on all sides
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 4. UI ELEMENTS -->
+<section class="section">
+  <div class="section-header">
+    <h2>UI Elements</h2>
+    <div class="line"></div>
+    <p>Buttons, icons, and decorative elements that maintain brand consistency.</p>
+  </div>
+
+  <div class="elements-grid">
+    <div class="element-card">
+      <div class="card-label">Buttons</div>
+      <div>
+        <a class="btn btn-primary">Book a Class</a><br>
+        <a class="btn btn-outline">Learn More</a><br>
+        <a class="btn btn-dark">View Schedule</a><br>
+        <a class="btn btn-pill">Join Now</a>
+      </div>
+    </div>
+
+    <div class="element-card">
+      <div class="card-label">Decorative Icons</div>
+      <div class="icon-row">
+        <div class="icon-item">
+          <div class="icon-symbol">
+            <svg width="32" height="32" viewBox="0 0 32 32"><path d="M8,3 A13,13 0 0,1 8,29 A10,10 0 0,0 8,3 Z" fill="currentColor" opacity="0.5"/><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+          </div>
+          <div class="icon-label">Crescent Moon</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-symbol">
+            <svg width="28" height="28" viewBox="0 0 28 28"><path d="M14,2 L16,10 L24,12 L16,14 L14,22 L12,14 L4,12 L12,10 Z" fill="currentColor"/></svg>
+          </div>
+          <div class="icon-label">Sparkle Star</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-symbol">
+            <svg width="28" height="28" viewBox="0 0 28 28"><path d="M14,4 L15,10 L21,11 L15,12 L14,18 L13,12 L7,11 L13,10 Z" fill="currentColor" opacity="0.6"/><path d="M20,14 L20.5,17 L23.5,17.5 L20.5,18 L20,21 L19.5,18 L16.5,17.5 L19.5,17 Z" fill="currentColor" opacity="0.4"/></svg>
+          </div>
+          <div class="icon-label">Double Sparkle</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-symbol">
+            <svg width="28" height="40" viewBox="0 0 28 40"><circle cx="14" cy="5" r="3.5" fill="currentColor"/><path d="M13,8 Q12,16 11,22 L15,22 Q14,16 15,8 Z" fill="currentColor"/><path d="M15,10 Q20,8 25,6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M12,10 Q7,12 3,15" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M12,22 Q11,30 12,36" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M14,20 Q8,24 4,28" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <div class="icon-label">Dancer</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-symbol" style="font-family:'Cormorant Garamond',serif; font-style:italic;">&</div>
+          <div class="icon-label">Ampersand</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="element-card">
+      <div class="card-label">Patterns & Textures</div>
+      <div class="pattern-row">
+        <div class="pattern-swatch moon-pattern">
+          <svg width="50" height="50" viewBox="0 0 50 50"><path d="M15,5 A20,20 0 0,1 15,45 A15,15 0 0,0 15,5 Z" fill="var(--gold-light)" opacity="0.6"/><circle cx="25" cy="25" r="20" fill="none" stroke="var(--gold-light)" stroke-width="1"/></svg>
+        </div>
+        <div class="pattern-swatch stars-pattern">
+          <svg width="60" height="60" viewBox="0 0 60 60"><path d="M15,10 L16.5,6 L18,10 L22,11.5 L18,13 L16.5,17 L15,13 L11,11.5 Z" fill="var(--gold)"/><path d="M35,25 L36,22 L37,25 L40,26 L37,27 L36,30 L35,27 L32,26 Z" fill="var(--gold)" opacity="0.7"/><path d="M20,38 L21,36 L22,38 L24,39 L22,40 L21,42 L20,40 L18,39 Z" fill="var(--gold)" opacity="0.5"/><path d="M45,12 L45.5,10.5 L46,12 L47.5,12.5 L46,13 L45.5,14.5 L45,13 L43.5,12.5 Z" fill="var(--gold)" opacity="0.4"/></svg>
+        </div>
+        <div class="pattern-swatch gradient-pattern"></div>
+      </div>
+      <p style="font-size:0.75rem; color:var(--medium-gray); font-weight:300; margin-top:12px;">
+        Lunar, celestial, and gradient patterns for backgrounds and accents.
+      </p>
+    </div>
+
+    <div class="element-card">
+      <div class="card-label">Gradients</div>
+      <div style="display:grid; gap:12px;">
+        <div style="height:50px; border-radius:8px; background:linear-gradient(135deg, #C9A96E 0%, #D4B896 100%); display:flex; align-items:center; padding:0 16px;">
+          <span style="font-size:0.7rem; color:white; letter-spacing:0.1em;">Gold &rarr; Nude</span>
+        </div>
+        <div style="height:50px; border-radius:8px; background:linear-gradient(135deg, #1A1A1A 0%, #3a3028 100%); display:flex; align-items:center; padding:0 16px;">
+          <span style="font-size:0.7rem; color:var(--gold); letter-spacing:0.1em;">Dark &rarr; Warm Black</span>
+        </div>
+        <div style="height:50px; border-radius:8px; background:linear-gradient(135deg, #E8C4B8 0%, #E8D5B0 100%); display:flex; align-items:center; padding:0 16px;">
+          <span style="font-size:0.7rem; color:var(--dark-gray); letter-spacing:0.1em;">Blush &rarr; Soft Gold</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 5. SOCIAL MEDIA TEMPLATES -->
+<section class="section">
+  <div class="section-header">
+    <h2>Social Media</h2>
+    <div class="line"></div>
+    <p>Instagram post templates maintaining visual consistency across all content types.</p>
+  </div>
+
+  <div class="social-grid">
+    <!-- Post 1: Promo -->
+    <div class="social-post post-1">
+      <div class="post-image">
+        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom:10px;"><path d="M15,5 A20,20 0 0,1 15,45 A15,15 0 0,0 15,5 Z" fill="var(--gold)" opacity="0.5"/><circle cx="25" cy="25" r="20" fill="none" stroke="var(--gold)" stroke-width="1.2"/><path d="M22,12 L23,9 L24,12 L27,13 L24,14 L23,17 L22,14 L19,13 Z" fill="var(--gold)" opacity="0.7"/></svg>
+        <div class="post-brand" style="font-size:1.6rem; color:var(--black); letter-spacing:0.2em;">LUNA</div>
+        <div class="post-sub" style="font-size:0.9rem; color:var(--gold);">Barre & Pilates</div>
+        <div class="post-cta" style="color:var(--gold); border-color:var(--gold); margin-top:24px;">Book Now</div>
+      </div>
+      <div class="post-caption">
+        <div class="handle">@luna.studio</div>
+        <div class="text">New classes starting this month. Find your balance under the moonlight.</div>
+      </div>
+    </div>
+
+    <!-- Post 2: Quote -->
+    <div class="social-post post-2">
+      <div class="post-image">
+        <div style="color:var(--gold); font-size:2rem; margin-bottom:16px;">&#10022;</div>
+        <div class="post-quote" style="color:var(--white); font-size:1.1rem;">
+          "Strength does not come from the body. It comes from the will."
+        </div>
+        <div style="margin-top:16px; width:30px; height:1px; background:var(--gold);"></div>
+      </div>
+      <div class="post-caption">
+        <div class="handle">@luna.studio</div>
+        <div class="text">Every movement is a step closer to your strongest self.</div>
+      </div>
+    </div>
+
+    <!-- Post 3: Class schedule -->
+    <div class="social-post post-3">
+      <div class="post-image" style="padding:30px;">
+        <div style="text-align:center; width:100%;">
+          <div style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--black); letter-spacing:0.15em; margin-bottom:20px;">This Week</div>
+          <div style="text-align:left; max-width:160px; margin:0 auto;">
+            <div style="font-family:'Raleway',sans-serif; font-size:0.7rem; color:var(--dark-gray); padding:6px 0; border-bottom:1px solid var(--gold-light); display:flex; justify-content:space-between;">
+              <span>Mon</span><span style="color:var(--gold);">Barre Flow</span>
+            </div>
+            <div style="font-family:'Raleway',sans-serif; font-size:0.7rem; color:var(--dark-gray); padding:6px 0; border-bottom:1px solid var(--gold-light); display:flex; justify-content:space-between;">
+              <span>Tue</span><span style="color:var(--gold);">Pilates Core</span>
+            </div>
+            <div style="font-family:'Raleway',sans-serif; font-size:0.7rem; color:var(--dark-gray); padding:6px 0; border-bottom:1px solid var(--gold-light); display:flex; justify-content:space-between;">
+              <span>Wed</span><span style="color:var(--gold);">Stretch & Tone</span>
+            </div>
+            <div style="font-family:'Raleway',sans-serif; font-size:0.7rem; color:var(--dark-gray); padding:6px 0; border-bottom:1px solid var(--gold-light); display:flex; justify-content:space-between;">
+              <span>Thu</span><span style="color:var(--gold);">Barre Sculpt</span>
+            </div>
+            <div style="font-family:'Raleway',sans-serif; font-size:0.7rem; color:var(--dark-gray); padding:6px 0; display:flex; justify-content:space-between;">
+              <span>Fri</span><span style="color:var(--gold);">Full Body</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="post-caption">
+        <div class="handle">@luna.studio</div>
+        <div class="text">New week, new energy. Which class are you joining?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stories -->
+  <div style="text-align:center; margin-top:60px;">
+    <div style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:24px;">Instagram Stories</div>
+  </div>
+  <div class="story-row">
+    <div class="story-mock story-1">
+      <div class="story-content">
+        <div style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--black); letter-spacing:0.2em;">LUNA</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:0.85rem; color:var(--gold); margin-top:4px;">New Class Alert</div>
+        <div style="width:30px; height:1px; background:var(--gold); margin:16px auto;"></div>
+        <div style="font-family:'Raleway',sans-serif; font-size:0.65rem; color:var(--dark-gray); letter-spacing:0.1em;">SWIPE UP</div>
+      </div>
+    </div>
+    <div class="story-mock story-2">
+      <div class="story-content">
+        <div style="color:var(--gold); font-size:2rem; margin-bottom:16px;">&#10022;</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--white); max-width:150px; line-height:1.6;">
+          "Grace in every movement"
+        </div>
+        <div style="width:30px; height:1px; background:var(--gold); margin:16px auto;"></div>
+        <div style="font-family:'Playfair Display',serif; font-size:0.7rem; color:var(--gold); letter-spacing:0.15em;">LUNA</div>
+      </div>
+    </div>
+    <div class="story-mock story-3">
+      <div class="story-content">
+        <div style="font-family:'Raleway',sans-serif; font-size:0.6rem; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:12px;">Limited Spots</div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--black); letter-spacing:0.1em; line-height:1.4;">
+          Morning<br>Barre Flow
+        </div>
+        <div style="font-family:'Raleway',sans-serif; font-size:0.65rem; color:var(--dark-gray); margin-top:12px;">7:00 AM &middot; Mon &ndash; Fri</div>
+        <div style="margin-top:16px; padding:6px 16px; border:1px solid var(--gold); font-family:'Raleway',sans-serif; font-size:0.55rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase;">Book Now</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 6. PHOTOGRAPHY DIRECTION -->
+<section class="section">
+  <div class="section-header">
+    <h2>Photography Direction</h2>
+    <div class="line"></div>
+    <p>Warm tones, soft natural light, elegant movement, and intentional negative space.</p>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-card photo-1"><span>Studio Interior</span></div>
+    <div class="photo-card photo-2"><span>Movement Detail</span></div>
+    <div class="photo-card photo-3"><span>Class Atmosphere</span></div>
+    <div class="photo-card photo-4"><span>Lifestyle</span></div>
+  </div>
+
+  <div style="margin-top:30px; background:var(--white); border-radius:12px; padding:30px 40px; box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+    <div style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:16px;">Photo Guidelines</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div>
+        <div style="font-size:0.85rem; font-weight:500; color:var(--black); margin-bottom:6px;">Mood</div>
+        <p style="font-size:0.8rem; color:var(--medium-gray); font-weight:300; line-height:1.6;">Calm, aspirational, empowering. Natural light preferred. Golden hour warmth. Avoid harsh flash or cold tones.</p>
+      </div>
+      <div>
+        <div style="font-size:0.85rem; font-weight:500; color:var(--black); margin-bottom:6px;">Composition</div>
+        <p style="font-size:0.8rem; color:var(--medium-gray); font-weight:300; line-height:1.6;">Leave space for text overlays. Focus on lines of the body and movement. Minimalist backgrounds, neutral or warm tones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 7. TONE OF VOICE -->
+<section class="section">
+  <div class="section-header">
+    <h2>Tone of Voice</h2>
+    <div class="line"></div>
+    <p>How the LUNA brand speaks to its community.</p>
+  </div>
+
+  <div class="tone-grid">
+    <div class="tone-card">
+      <div class="tone-icon">&#9790;</div>
+      <h4>Elegant</h4>
+      <p>Refined language that reflects the boutique nature of the studio. Poised, never pretentious.</p>
+    </div>
+    <div class="tone-card">
+      <div class="tone-icon">&#10022;</div>
+      <h4>Empowering</h4>
+      <p>Uplifting and encouraging. Celebrates strength, grace, and the journey of every individual.</p>
+    </div>
+    <div class="tone-card">
+      <div class="tone-icon">&hearts;</div>
+      <h4>Warm</h4>
+      <p>Approachable and inviting. Creates a sense of community and belonging.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:40px; background:var(--white); border-radius:12px; padding:30px 40px; box-shadow:0 2px 20px rgba(0,0,0,0.04);">
+    <div style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:16px;">Voice Examples</div>
+    <div style="display:grid; gap:16px;">
+      <div style="display:flex; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--nude-light);">
+        <span style="font-size:0.75rem; color:var(--medium-gray); width:80px; flex-shrink:0;">Instead of:</span>
+        <span style="font-size:0.85rem; color:var(--medium-gray); font-weight:300; text-decoration:line-through;">Sign up for our gym classes today!</span>
+      </div>
+      <div style="display:flex; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--nude-light);">
+        <span style="font-size:0.75rem; color:var(--gold); width:80px; flex-shrink:0;">Say:</span>
+        <span style="font-size:0.85rem; color:var(--black); font-weight:400; font-family:'Cormorant Garamond',serif; font-size:1rem;">Begin your journey toward strength and grace.</span>
+      </div>
+      <div style="display:flex; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--nude-light);">
+        <span style="font-size:0.75rem; color:var(--medium-gray); width:80px; flex-shrink:0;">Instead of:</span>
+        <span style="font-size:0.85rem; color:var(--medium-gray); font-weight:300; text-decoration:line-through;">HURRY! 50% OFF ALL CLASSES!!!</span>
+      </div>
+      <div style="display:flex; gap:16px;">
+        <span style="font-size:0.75rem; color:var(--gold); width:80px; flex-shrink:0;">Say:</span>
+        <span style="font-size:0.85rem; color:var(--black); font-weight:400; font-family:'Cormorant Garamond',serif; font-size:1rem;">A special moment to begin &mdash; enjoy 50% off your first month.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 8. DO / DON'T -->
+<section class="section">
+  <div class="section-header">
+    <h2>Brand Guidelines</h2>
+    <div class="line"></div>
+    <p>Rules to keep the LUNA brand consistent and recognizable.</p>
+  </div>
+
+  <div class="dos-donts">
+    <div class="do-card">
+      <div class="card-label" style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:600; margin-bottom:20px;">Do</div>
+      <ul class="rule-list">
+        <li><span class="icon-check">&#10003;</span> Use the full color palette consistently</li>
+        <li><span class="icon-check">&#10003;</span> Maintain minimum clear space around logo</li>
+        <li><span class="icon-check">&#10003;</span> Use warm, golden-tone photography</li>
+        <li><span class="icon-check">&#10003;</span> Keep typography hierarchy consistent</li>
+        <li><span class="icon-check">&#10003;</span> Use celestial motifs (moon, stars) as accents</li>
+        <li><span class="icon-check">&#10003;</span> Write in an elegant, empowering tone</li>
+        <li><span class="icon-check">&#10003;</span> Leave generous whitespace</li>
+      </ul>
+    </div>
+    <div class="dont-card">
+      <div class="card-label" style="font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:600; margin-bottom:20px;">Don't</div>
+      <ul class="rule-list">
+        <li><span class="icon-x">&#10005;</span> Stretch, rotate, or alter the logo</li>
+        <li><span class="icon-x">&#10005;</span> Use neon, saturated, or cold colors</li>
+        <li><span class="icon-x">&#10005;</span> Use casual or aggressive language</li>
+        <li><span class="icon-x">&#10005;</span> Crowd content with too many elements</li>
+        <li><span class="icon-x">&#10005;</span> Mix brand fonts with unrelated typefaces</li>
+        <li><span class="icon-x">&#10005;</span> Use low-resolution or stock-looking imagery</li>
+        <li><span class="icon-x">&#10005;</span> Place the logo on clashing backgrounds</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="brand">LUNA</div>
+  <div class="sub">Barre & Pilates &middot; Boutique Studio</div>
+  <div class="note">Brand Design System &mdash; Confidential &middot; 2026</div>
+</footer>
+
+</body>
+</html>
